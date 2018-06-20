@@ -3,9 +3,11 @@ Description=Wildfly Application Server
 After=syslog.target network.target
 
 [Service]
-Type=forking
+Type=simple
 ExecStart=/etc/init.d/<%= $wildfly::service::service_name %> start
 ExecStop=/etc/init.d/<%= $wildfly::service::service_name %> stop
+WorkingDirectory=/usr/local/vocalocity
+LimitCORE=infinity
 
 [Install]
 WantedBy=multi-user.target
